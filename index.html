@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+<h1>WebSocket [ws://] Check Console</h1>
+
+<script src="/jquery/dist/jquery.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io.connect('http://localhost:4300');
+    socket.on('connect', function(data) {
+        console.log("Successful Connection ---> socket.on('connect'");
+        socket.emit('join', 'Hello World from client');
+        console.log("Emiteed ---> socket.emit('join'");
+    });
+    socket.on('messages', function(data) {
+       console.log("Got Callback ---> socket.on('messages',....");
+    });
+</script>
+</body>
+</html>
